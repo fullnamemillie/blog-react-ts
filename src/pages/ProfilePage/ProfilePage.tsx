@@ -1,8 +1,8 @@
 import React from 'react';
 import AuthorBanner from '../../components/AuthorBanner/AuthorBanner';
-import MainContent from '../../components/MainContent/MainContent';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useGetAuthorPostsQuery } from '../../api/api';
+import AuthorProfileContent from '../../components/AuthorProfileContent/AuthorProfileContent';
 
 const UserPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -19,13 +19,13 @@ const UserPage = () => {
     author: profile!,
   });
 
-  console.log(profile!);
-  console.log(data);
+  // console.log(profile!);
+  // console.log(data);
 
   return (
     <>
       <AuthorBanner />
-      <MainContent
+      <AuthorProfileContent
         data={data}
         isLoading={isLoading}
         error={error}

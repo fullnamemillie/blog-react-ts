@@ -5,7 +5,7 @@ import ReactPaginate from 'react-paginate';
 import PopularTagsComponent from '../PopularTagsComponent/PopularTagsComponent';
 import { MainContentData } from '../../interfaces/interfaces';
 
-interface MainContentProps {
+export interface MainContentProps {
   data?: MainContentData;
   isLoading: boolean;
   error: unknown;
@@ -46,9 +46,9 @@ const MainContent: FC<MainContentProps> = ({
     );
   }
 
-  if (error) {
-    return <h2>Error!</h2>;
-  }
+  // if (error) {
+  //   return <h2>Error!</h2>;
+  // }
 
   return (
     <>

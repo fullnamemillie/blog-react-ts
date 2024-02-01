@@ -10,7 +10,7 @@ interface MainContentInt extends BaseInt {
 }
 
 interface UserProfileInt extends BaseInt {
-  author: string;
+  author?: string;
 }
 
 export const projectApi = createApi({

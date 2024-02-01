@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './components/Header/Header';
 import { Route, Routes } from 'react-router-dom';
-import UserPage from './pages/UserPage/UserPage';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
 import MainPage from './pages/MainPage/MainPage';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/:profile" element={<UserPage />} />
+        <Route path="/:profile" element={<ProfilePage />} />
       </Routes>
     </div>
   );

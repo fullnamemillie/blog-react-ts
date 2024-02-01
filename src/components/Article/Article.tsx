@@ -22,7 +22,7 @@ export const Article: FC<ArticleArrProps> = ({
       <div className="border-t border-black/10 py-6">
         <section className="flex justify-between items-center mb-2">
           <div className="flex gap-2">
-            <Link to={`/@${author.username}`}>
+            <Link to={`/${author.username}`}>
               <img
                 className="rounded-full w-8 h-8"
                 src={author.image}
@@ -31,7 +31,7 @@ export const Article: FC<ArticleArrProps> = ({
             </Link>
             <div className=" leading-4">
               <Link
-                to={`/@${author.username}`}
+                to={`/${author.username}`}
                 className="text-blog-blue font-medium hover:text-blog-darkBlue hover:underline"
               >
                 {author.username}

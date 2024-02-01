@@ -3,8 +3,8 @@ import FollowButton from '../FollowButton/FollowButton';
 
 const AuthorBanner = () => {
   return (
-    <section className="bg-blog-lightGray pt-8 pb-4">
-      <div className="w-author m-auto">
+    <section className="bg-blog-lightGray pt-8 pb-4 mb-6">
+      <div className="w-authorContainer m-auto">
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/F1_light_blue_flag.svg/2560px-F1_light_blue_flag.svg.png"
           alt="author-avatar"
@@ -14,7 +14,7 @@ const AuthorBanner = () => {
           Maksim Esteban
         </p>
       </div>
-      <div className="w-author m-auto text-end">
+      <div className="w-authorContainer m-auto text-end">
         <FollowButton />
       </div>
     </section>

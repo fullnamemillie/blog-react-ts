@@ -29,7 +29,7 @@ module.exports = {
         container: '68.75rem',
         articleText: '1rem',
         articleTag: '0.125rem',
-        author: '57.5rem',
+        authorContainer: '57.5rem',
         authorImage: '6.25rem',
       },
       boxShadow: {

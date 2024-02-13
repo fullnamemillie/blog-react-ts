@@ -46,9 +46,9 @@ const MainContent: FC<MainContentProps> = ({
     );
   }
 
-  // if (error) {
-  //   return <h2>Error!</h2>;
-  // }
+  if (error) {
+    return <h2>Error!</h2>;
+  }
 
   return (
     <>

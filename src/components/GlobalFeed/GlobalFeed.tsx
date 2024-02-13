@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { NavLink, useSearchParams } from 'react-router-dom';
 
-const GlobalFeed = () => {
+interface FavoritedArticles {
+  text: string;
+  link: string;
+}
+
+interface GlobalFeedProps {
+  defaultText?: string;
+  defaultLink?: string;
+  items?: FavoritedArticles[];
+}
+
+const GlobalFeed: FC<GlobalFeedProps> = ({
+  defaultText = 'Global Feed',
+  defaultLink = '/',
+  items = [],
+}) => {
   const [searchParams] = useSearchParams();
 
   const tag = searchParams.get('tag');
@@ -9,11 +24,18 @@ const GlobalFeed = () => {
   return (
     <div className=" flex gap-4">
       <NavLink
-        to="/"
+        to={defaultLink}
         className="px-4 py-2 text-blog-blue border-b-2 border-blog-blue"
       >
-        Global Feed
+        {defaultText}
       </NavLink>
+      <div>
+        {items.map((item) => (
+          <NavLink key={item.link} to={item.link}>
+            {item.text}
+          </NavLink>
+        ))}
+      </div>
       <div className="px-4 py-2 text-blog-blue">{tag && <p>#{tag}</p>}</div>
     </div>
   );

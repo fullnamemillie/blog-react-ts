@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import { MainContentProps } from '../MainContent/MainContent';
-import MyArticles from '../MyArticles/MyArticles';
 import ArticleList from '../ArticleList/ArticleList';
 import ReactPaginate from 'react-paginate';
+import GlobalFeed from '../GlobalFeed/GlobalFeed';
+import { useLocation } from 'react-router-dom';
 
 interface AuthorProfileContentProps extends MainContentProps {}
 
@@ -24,11 +25,20 @@ const AuthorProfileContent: FC<AuthorProfileContentProps> = ({
     });
   };
 
+  const location = useLocation();
+
+  // const favoritedArticles = [
+  //   { text: 'Favorited Articles', link: `${location.pathname}/favorites` },
+  // ];
+
   if (isLoading) {
     return (
       <div className="w-authorContainer mx-auto">
         <div>
-          <MyArticles />
+          <GlobalFeed
+            defaultText="My Articles"
+            defaultLink={location.pathname}
+          />
         </div>
         <div className="mt-4">
           <h2>Loading articles...</h2>
@@ -41,7 +51,10 @@ const AuthorProfileContent: FC<AuthorProfileContentProps> = ({
     return (
       <div className="w-authorContainer mx-auto">
         <div className="mt-4">
-          <MyArticles />
+          <GlobalFeed
+            defaultText="My Articles"
+            defaultLink={location.pathname}
+          />
         </div>
         <div>
           <h2>Error!</h2>
@@ -53,7 +66,7 @@ const AuthorProfileContent: FC<AuthorProfileContentProps> = ({
   return (
     <div className="w-authorContainer mx-auto">
       <div>
-        <MyArticles />
+        <GlobalFeed defaultText="My Articles" defaultLink={location.pathname} />
       </div>
       <div>
         <ArticleList data={data?.articles || []} />

@@ -1,6 +1,6 @@
 import React from 'react';
 // import TagList from '../TagList/TagList';
-import { useGetPopularTagsQuery } from '../../api/api';
+import { useGetPopularTagsQuery } from '../../api/postsApi';
 import PopularTagsList from '../PopularTagsList/PopularTagsList';
 
 const PopularTags = () => {

@@ -28,3 +28,14 @@ export interface Author {
 export interface PopularTagsArr {
   tags: string[];
 }
+
+export interface ProfileContentData {
+  profile: Profile;
+}
+
+export interface Profile {
+  username: string;
+  bio: string;
+  image: string;
+  following: boolean;
+}

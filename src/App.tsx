@@ -11,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/:profile" element={<ProfilePage />} />
+        <Route path="/:profile/favorites" element={<ProfilePage />} />
       </Routes>
     </div>
   );

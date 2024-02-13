@@ -1,14 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { TypedUseSelectorHook } from 'react-redux';
-import { projectApi } from '../api/api';
+import { postsApi } from '../api/postsApi';
+import { profileApi } from '../api/profileApi';
 
 export const store = configureStore({
   reducer: {
-    [projectApi.reducerPath]: projectApi.reducer,
+    [postsApi.reducerPath]: postsApi.reducer,
+    [profileApi.reducerPath]: profileApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(projectApi.middleware),
+    getDefaultMiddleware().concat(postsApi.middleware, profileApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

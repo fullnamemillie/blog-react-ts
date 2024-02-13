@@ -2,7 +2,7 @@ import React from 'react';
 import Banner from '../../components/Banner/Banner';
 import MainContent from '../../components/MainContent/MainContent';
 import { useSearchParams } from 'react-router-dom';
-import { useGetPostsQuery } from '../../api/api';
+import { useGetPostsQuery } from '../../api/postsApi';
 import Container from '../../components/Container/Container';
 
 const MainPage = () => {

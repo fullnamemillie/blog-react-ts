@@ -1,8 +1,9 @@
 import React from 'react';
 import AuthorBanner from '../../components/AuthorBanner/AuthorBanner';
 import { useParams, useSearchParams } from 'react-router-dom';
-import { useGetAuthorPostsQuery } from '../../api/api';
+import { useGetAuthorPostsQuery } from '../../api/postsApi';
 import AuthorProfileContent from '../../components/AuthorProfileContent/AuthorProfileContent';
+import { useGetProfileQuery } from '../../api/profileApi';
 
 const UserPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -19,12 +20,13 @@ const UserPage = () => {
     author: profile!,
   });
 
-  // console.log(profile!);
-  // console.log(data);
+  const { data: profileInfo } = useGetProfileQuery({
+    username: profile!,
+  });
 
   return (
     <>
-      <AuthorBanner />
+      <AuthorBanner profileInfo={profileInfo} />
       <AuthorProfileContent
         data={data}
         isLoading={isLoading}

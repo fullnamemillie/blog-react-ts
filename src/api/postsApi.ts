@@ -13,7 +13,7 @@ interface UserProfileInt extends BaseInt {
   author?: string;
 }
 
-export const projectApi = createApi({
+export const postsApi = createApi({
   reducerPath: 'postsApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.realworld.io/api/' }),
   endpoints: (builder) => ({
@@ -55,4 +55,4 @@ export const {
   useGetPostsQuery,
   useGetAuthorPostsQuery,
   useGetPopularTagsQuery,
-} = projectApi;
+} = postsApi;

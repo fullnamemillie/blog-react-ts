@@ -7,7 +7,7 @@ const Header = () => {
     <header>
       <nav className="px-2 py-3">
         <Container>
-          <div className=" flex justify-between items-center">
+          <div className="flex justify-between items-center">
             <Link to="/" className="font-titillium text-2xl text-blog-blue">
               Blog
             </Link>

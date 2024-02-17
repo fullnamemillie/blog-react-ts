@@ -24,9 +24,13 @@ const UserPage = () => {
     username: profile!,
   });
 
+  if (!profileInfo) {
+    return null;
+  }
+
   return (
     <>
-      <AuthorBanner profileInfo={profileInfo} />
+      <AuthorBanner profile={profileInfo.profile} />
       <AuthorProfileContent
         data={data}
         isLoading={isLoading}

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import FavoriteButton from '../FavoriteButton/FavoriteButton';
 import TagList from '../TagList/TagList';
 import { ArticleArr } from '../../interfaces/interfaces';
-import moment from 'moment';
+import ArticleAuthor from '../ArticleAuthor/ArticleAuthor';
 
 interface ArticleArrProps extends ArticleArr {}
 
@@ -14,49 +14,33 @@ export const Article: FC<ArticleArrProps> = ({
   title,
   description,
   tagList,
+  slug,
 }) => {
-  const formattedDate = moment(createdAt).format('MMMM D, YYYY');
-
   return (
     <article>
       <div className="border-t border-black/10 py-6">
         <section className="flex justify-between items-center mb-2">
-          <div className="flex gap-2">
-            <Link to={`/${author.username}`}>
-              <img
-                className="rounded-full w-8 h-8"
-                src={author.image}
-                alt="author-avatar"
-              />
-            </Link>
-            <div className=" leading-4">
-              <Link
-                to={`/${author.username}`}
-                className="text-blog-blue font-medium hover:text-blog-darkBlue hover:underline"
-              >
-                {author.username}
-              </Link>
-              <p className="text-blog-gray text-sm font-light">
-                {formattedDate}
-              </p>
-            </div>
+          <div className="flex gap-2 text-blog-blue hover:text-blog-darkBlue">
+            <ArticleAuthor author={author} createdAt={createdAt} />
           </div>
           <div>
             <FavoriteButton favoritesCount={favoritesCount} />
           </div>
         </section>
-        <section>
-          <h2 className="text-2xl text-black/80 font-semibold mb-1">{title}</h2>
-          <p className="text-articleText font-light text-blog-gray mb-4">
-            {description}
-          </p>
-        </section>
-        <section className="flex justify-between">
-          <Link to="/@alexey" className="text-blog-gray text-sm font-light">
-            Read more...
-          </Link>
-          <TagList tagList={tagList} />
-        </section>
+        <Link to={`/articles/${slug}`}>
+          <section>
+            <h2 className="text-2xl text-black/80 font-semibold mb-1">
+              {title}
+            </h2>
+            <p className="text-articleText font-light text-blog-gray mb-4">
+              {description}
+            </p>
+          </section>
+          <section className="flex justify-between">
+            <p className="text-blog-gray text-sm font-light">Read more...</p>
+            <TagList tagList={tagList} />
+          </section>
+        </Link>
       </div>
     </article>
   );

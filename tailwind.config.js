@@ -5,9 +5,12 @@ module.exports = {
     extend: {
       fontFamily: {
         titillium: ['Titillium Web', 'sans-serif'],
+        sourceSerif: ['Source Serif Pro', 'serif'],
       },
       fontSize: {
         logo: '3.5rem',
+        articleBanner: '2.8rem',
+        articleSize: '1.25rem',
       },
       borderRadius: {
         articleTag: '10rem',
@@ -21,6 +24,7 @@ module.exports = {
           darkGray: '#818a91',
           darkestGray: '#667078',
           black: 'black',
+          lightBlack: '#333',
         },
       },
       spacing: {
@@ -38,6 +42,9 @@ module.exports = {
       },
       dropShadow: {
         logo: '0px 1px 3px rgb(0 0 0 /30%)',
+      },
+      lineHeight: {
+        articleBanner: '1.1',
       },
     },
   },

@@ -2,10 +2,8 @@ import React, { FC } from 'react';
 import ArticleBanner from '../../components/ArticleBanner/ArticleBanner';
 import Container from '../../components/Container/Container';
 import TagList from '../../components/TagList/TagList';
-import ArticleAuthor from '../../components/ArticleAuthor/ArticleAuthor';
-import FollowButton from '../../components/FollowButton/FollowButton';
-import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
 import { Link } from 'react-router-dom';
+import ArticleAuthorSection from '../../components/ArticleAuthorSection/ArticleAuthorSection';
 
 interface ArticlePageProps {}
 
@@ -49,22 +47,8 @@ const ArticlePage: FC<ArticlePageProps> = () => {
             tagList={['adp', 'ddf', 'sans-serif', 'contona', 'roboto']}
           />
         </section>
-        <section className="flex gap-6 items-center justify-center mt-6 mb-12">
-          <div className="flex gap-2 text-blog-blue hover:text-blog-darkBlue">
-            <ArticleAuthor
-              author={{
-                username: 'Maksim Esteban',
-                image:
-                  'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/F1_light_blue_flag.svg/2560px-F1_light_blue_flag.svg.png',
-                following: false,
-              }}
-              createdAt={new Date().toISOString()}
-            />
-          </div>
-          <div className="flex gap-1">
-            <FollowButton username="Maksim Esteban" />
-            <FavoriteButton favoritesCount={168} extended />
-          </div>
+        <section className="flex justify-center mt-6 mb-12">
+          <ArticleAuthorSection usernameClassNames="BLUE" />
         </section>
         <section className="ml-32 flex gap-1 mb-10">
           <div className="text-blog-blue hover:underline">
@@ -72,7 +56,7 @@ const ArticlePage: FC<ArticlePageProps> = () => {
           </div>
           <span>or</span>
           <div className="text-blog-blue hover:underline">
-            <Link to="/login">sign up</Link>
+            <Link to="/register">sign up</Link>
           </div>
           <span>to add comments on this article.</span>
         </section>

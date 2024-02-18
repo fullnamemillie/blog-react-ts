@@ -20,7 +20,7 @@ export const Article: FC<ArticleArrProps> = ({
     <article>
       <div className="border-t border-black/10 py-6">
         <section className="flex justify-between items-center mb-2">
-          <div className="flex gap-2 text-blog-blue hover:text-blog-darkBlue">
+          <div className="flex gap-2">
             <ArticleAuthor author={author} createdAt={createdAt} />
           </div>
           <div>

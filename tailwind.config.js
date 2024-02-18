@@ -25,6 +25,7 @@ module.exports = {
           darkestGray: '#667078',
           black: 'black',
           lightBlack: '#333',
+          silver: '#ccc',
         },
       },
       spacing: {

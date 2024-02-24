@@ -18,7 +18,7 @@ const Header = () => {
                   className={({ isActive }: { isActive: boolean }) =>
                     isActive
                       ? 'text-black/80 py-navItem'
-                      : 'text-black/30 py-navItem'
+                      : 'text-black/30 py-navItem hover:text-black/60'
                   }
                 >
                   Home
@@ -30,7 +30,7 @@ const Header = () => {
                   className={({ isActive }: { isActive: boolean }) =>
                     isActive
                       ? 'text-black/80 py-navItem'
-                      : 'text-black/30 py-navItem'
+                      : 'text-black/30 py-navItem hover:text-black/60'
                   }
                 >
                   Sign in
@@ -42,7 +42,7 @@ const Header = () => {
                   className={({ isActive }: { isActive: boolean }) =>
                     isActive
                       ? 'text-black/80 py-navItem'
-                      : 'text-black/30 py-navItem'
+                      : 'text-black/30 py-navItem hover:text-black/60'
                   }
                 >
                   Sign up

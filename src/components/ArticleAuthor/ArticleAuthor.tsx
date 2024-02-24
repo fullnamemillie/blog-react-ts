@@ -31,7 +31,7 @@ const ArticleAuthor: FC<ArticleAuthorProps> = ({
   );
 
   return (
-    <>
+    <div className="flex gap-2">
       <Link to={`/${author.username}`}>
         <img
           className="rounded-full w-8 h-8"
@@ -45,7 +45,7 @@ const ArticleAuthor: FC<ArticleAuthorProps> = ({
         </Link>
         <p className="text-blog-gray text-sm font-light">{formattedDate}</p>
       </div>
-    </>
+    </div>
   );
 };
 

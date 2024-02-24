@@ -1,3 +1,4 @@
+import { CommentsData, SpecificArticleData } from './../interfaces/interfaces';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { MainContentData, PopularTagsArr } from '../interfaces/interfaces';
 
@@ -13,6 +14,10 @@ interface UserProfileInt extends BaseInt {
   author?: string;
 }
 
+interface SpecificArticleInt {
+  slug: string;
+}
+
 export const postsApi = createApi({
   reducerPath: 'postsApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.realworld.io/api/' }),
@@ -20,7 +25,7 @@ export const postsApi = createApi({
     getPosts: builder.query<MainContentData, MainContentInt>({
       query: ({ page, tag }) => {
         return {
-          url: 'articles',
+          url: `/articles`,
           params: {
             limit: 10,
             offset: page * 10,
@@ -32,7 +37,7 @@ export const postsApi = createApi({
     getAuthorPosts: builder.query<MainContentData, UserProfileInt>({
       query: ({ page, author }) => {
         return {
-          url: 'articles',
+          url: `/articles`,
           params: {
             limit: 10,
             offset: page * 10,
@@ -44,7 +49,21 @@ export const postsApi = createApi({
     getPopularTags: builder.query<PopularTagsArr, void>({
       query: () => {
         return {
-          url: `tags`,
+          url: `/tags`,
+        };
+      },
+    }),
+    getSpecificArticle: builder.query<SpecificArticleData, SpecificArticleInt>({
+      query: ({ slug }) => {
+        return {
+          url: `/articles/${slug}`,
+        };
+      },
+    }),
+    getComments: builder.query<CommentsData, SpecificArticleInt>({
+      query: ({ slug }) => {
+        return {
+          url: `/articles/${slug}/comments`,
         };
       },
     }),
@@ -55,4 +74,6 @@ export const {
   useGetPostsQuery,
   useGetAuthorPostsQuery,
   useGetPopularTagsQuery,
+  useGetSpecificArticleQuery,
+  useGetCommentsQuery,
 } = postsApi;

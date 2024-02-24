@@ -36,6 +36,7 @@ module.exports = {
         articleTag: '0.125rem',
         authorContainer: '57.5rem',
         authorImage: '6.25rem',
+        commentsContainer: '52.9rem',
       },
       boxShadow: {
         banner:

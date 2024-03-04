@@ -68,3 +68,25 @@ export interface Comment {
   body: string;
   author: Author;
 }
+
+export interface SignUpReq {
+  user: SignUpReqUser;
+}
+
+export interface SignUpReqUser {
+  username: string;
+  email: string;
+  password: string;
+}
+
+export interface SignUpRes {
+  user: SignUpResUser;
+}
+
+export interface SignUpResUser {
+  email: string;
+  token: string;
+  username: string;
+  bio: string;
+  image: string;
+}

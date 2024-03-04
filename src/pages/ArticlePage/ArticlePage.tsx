@@ -46,7 +46,7 @@ const ArticlePage: FC<ArticlePageProps> = () => {
             showSomeButtons={true}
           />
         </section>
-        <section className="w-commentsContainer mx-auto mb-20">
+        <section className="w-commentsContainer mx-auto mb-14">
           <CommentList />
         </section>
       </Container>

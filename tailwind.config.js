@@ -11,9 +11,11 @@ module.exports = {
         logo: '3.5rem',
         articleBanner: '2.8rem',
         articleSize: '1.25rem',
+        signUp: '2.5rem',
       },
       borderRadius: {
         articleTag: '10rem',
+        signUpRounded: '0.3rem',
       },
       colors: {
         blog: {
@@ -37,6 +39,7 @@ module.exports = {
         authorContainer: '57.5rem',
         authorImage: '6.25rem',
         commentsContainer: '52.9rem',
+        inputWidth: '33.75rem',
       },
       boxShadow: {
         banner:

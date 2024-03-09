@@ -9,7 +9,6 @@ import AuthButton from '../../components/AuthButton/AuthButton';
 import { useLazySignUpQuery } from '../../api/authApi';
 import { useAppDispatch } from '../../store/store';
 import { setUser } from '../../store/service/authSlice';
-import { SignUpResUser } from '../../interfaces/interfaces';
 
 interface SignUpFormInt {
   username: string;
@@ -48,9 +47,10 @@ const SignUpPage: FC<SignUpPageProps> = () => {
     try {
       const res = await triggerSignUpQuery(values, false);
 
-      dispatch(setUser(res!.data!.user || null));
+      dispatch(setUser(res!.data!.user));
 
       navigate('/');
+
       console.log('ok', res);
     } catch (error: any) {
       console.log('error', error);

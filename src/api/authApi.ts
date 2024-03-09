@@ -10,8 +10,8 @@ export const authApi = createApi({
     signUp: builder.query<SignUpResUser, SignUpReqUser>({
       query: (args) => ({
         url: '/users',
-        method: 'POST',
-        data: {
+        method: 'post',
+        body: {
           user: args,
         },
       }),

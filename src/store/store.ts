@@ -4,11 +4,13 @@ import { TypedUseSelectorHook } from 'react-redux';
 import { postsApi } from '../api/postsApi';
 import { profileApi } from '../api/profileApi';
 import { authApi } from '../api/authApi';
+import { authSlice } from './service/authSlice';
 
 export const store = configureStore({
   reducer: {
     [postsApi.reducerPath]: postsApi.reducer,
     [profileApi.reducerPath]: profileApi.reducer,
+    [authSlice.name]: authSlice.reducer,
     [authApi.reducerPath]: authApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

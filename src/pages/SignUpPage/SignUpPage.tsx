@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import Container from '../../components/Container/Container';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Input from '../../components/Input/Input';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -38,9 +38,17 @@ const SignUpPage: FC<SignUpPageProps> = () => {
   });
 
   const [triggerSignUpQuery] = useLazySignUpQuery();
+  const navigate = useNavigate();
 
   const onSubmit = async (values: SignUpFormInt) => {
-    await triggerSignUpQuery(values, false);
+    try {
+      const res = await triggerSignUpQuery(values, false);
+
+      navigate('/');
+      console.log('ok', res);
+    } catch (error: any) {
+      console.log('error', error);
+    }
   };
 
   return (

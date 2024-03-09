@@ -84,6 +84,7 @@ export interface SignUpRes {
 }
 
 export interface SignUpResUser {
+  user: any;
   email: string;
   token: string;
   username: string;

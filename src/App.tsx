@@ -5,6 +5,7 @@ import ProfilePage from './pages/ProfilePage/ProfilePage';
 import MainPage from './pages/MainPage/MainPage';
 import ArticlePage from './pages/ArticlePage/ArticlePage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
+
 function App() {
   return (
     <div>

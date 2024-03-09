@@ -115,3 +115,22 @@ const SignUpPage: FC<SignUpPageProps> = () => {
 };
 
 export default SignUpPage;
+
+// const apiUrl = 'https://api.realworld.io/api';
+
+// const onSubmit = async (values: SignUpFormInt) => {
+//   try {
+
+//     const response = await axios.post(`${apiUrl}/users`, {
+//       user: values,
+//     });
+
+//     dispatch(setUser(response.data.user));
+//     navigate('/');
+
+//     console.log('ok', response);
+//   } catch (error) {
+//
+//     console.log('error', error);
+//   }
+// };

@@ -7,6 +7,9 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import AuthButton from '../../components/AuthButton/AuthButton';
 import { useLazySignUpQuery } from '../../api/authApi';
+import { useAppDispatch } from '../../store/store';
+import { setUser } from '../../store/service/authSlice';
+import { SignUpResUser } from '../../interfaces/interfaces';
 
 interface SignUpFormInt {
   username: string;
@@ -39,10 +42,13 @@ const SignUpPage: FC<SignUpPageProps> = () => {
 
   const [triggerSignUpQuery] = useLazySignUpQuery();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const onSubmit = async (values: SignUpFormInt) => {
     try {
       const res = await triggerSignUpQuery(values, false);
+
+      dispatch(setUser(res!.data!.user || null));
 
       navigate('/');
       console.log('ok', res);

@@ -6,25 +6,20 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import AuthButton from '../../components/AuthButton/AuthButton';
-import { useLazySignUpQuery } from '../../api/authApi';
+import { useLazySignInQuery } from '../../api/authApi';
 import { useAppDispatch } from '../../store/store';
 import { setUser } from '../../store/service/authSlice';
 
-interface SignUpFormInt {
-  username: string;
+interface SignInFormInt {
   email: string;
   password: string;
 }
 
-interface SignUpPageProps {
+interface SignInPageProps {
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const schema = yup.object().shape({
-  username: yup
-    .string()
-    .min(2, 'Username must be at least 2 characters')
-    .required('Username is required'),
   email: yup.string().email('Invalid email').required('Email is required'),
   password: yup
     .string()
@@ -32,22 +27,22 @@ const schema = yup.object().shape({
     .required('Password is required'),
 });
 
-const SignUpPage: FC<SignUpPageProps> = ({ setIsLoggedIn }) => {
+const SignInPage: FC<SignInPageProps> = ({ setIsLoggedIn }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SignUpFormInt>({
+  } = useForm<SignInFormInt>({
     resolver: yupResolver(schema),
   });
 
-  const [triggerSignUpQuery] = useLazySignUpQuery();
+  const [triggerSignInQuery] = useLazySignInQuery();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const onSubmit = async (values: SignUpFormInt) => {
+  const onSubmit = async (values: SignInFormInt) => {
     try {
-      const res = await triggerSignUpQuery(values, false);
+      const res = await triggerSignInQuery(values, false);
 
       dispatch(setUser(res!.data!.user));
 
@@ -64,24 +59,16 @@ const SignUpPage: FC<SignUpPageProps> = ({ setIsLoggedIn }) => {
   return (
     <>
       <Container>
-        <h1 className="text-signUp text-center mt-4">Sign up</h1>
+        <h1 className="text-signUp text-center mt-4">Sign in</h1>
         <div className="text-center">
           <Link to="/login" className="text-blog-blue hover:underline">
-            Have an account?
+            Need an account?
           </Link>
         </div>
         <form
           className="flex flex-col mx-auto max-w-inputWidth"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="mt-2">
-            <Input placeholder="Username" name="username" register={register} />
-            {errors.username && (
-              <p className="absolute text-xs text-red-500">
-                {errors.username.message}
-              </p>
-            )}
-          </div>
           <div className="mt-2">
             <Input
               placeholder="Email"
@@ -110,7 +97,7 @@ const SignUpPage: FC<SignUpPageProps> = ({ setIsLoggedIn }) => {
           </div>
 
           <div className="flex justify-end">
-            <AuthButton buttonName="Sign up" />
+            <AuthButton buttonName="Sign in" />
           </div>
         </form>
       </Container>
@@ -118,7 +105,7 @@ const SignUpPage: FC<SignUpPageProps> = ({ setIsLoggedIn }) => {
   );
 };
 
-export default SignUpPage;
+export default SignInPage;
 
 // const apiUrl = 'https://api.realworld.io/api';
 

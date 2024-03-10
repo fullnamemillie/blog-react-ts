@@ -91,3 +91,25 @@ export interface SignUpResUser {
   bio: string;
   image: string;
 }
+
+export interface SignInReq {
+  user: SignInReqUser;
+}
+
+export interface SignInReqUser {
+  email: string;
+  password: string;
+}
+
+export interface SignInRes {
+  user: SignInResUser;
+}
+
+export interface SignInResUser {
+  user: any;
+  email: string;
+  token: string;
+  username: string;
+  bio: string;
+  image: string;
+}

@@ -1,5 +1,10 @@
+import { SignInReqUser } from './../interfaces/interfaces';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { SignUpReqUser, SignUpResUser } from '../interfaces/interfaces';
+import {
+  SignInResUser,
+  SignUpReqUser,
+  SignUpResUser,
+} from '../interfaces/interfaces';
 
 export const authApi = createApi({
   reducerPath: 'authApi',
@@ -9,7 +14,16 @@ export const authApi = createApi({
   endpoints: (builder) => ({
     signUp: builder.query<SignUpResUser, SignUpReqUser>({
       query: (args) => ({
-        url: '/users',
+        url: `/users`,
+        method: 'post',
+        body: {
+          user: args,
+        },
+      }),
+    }),
+    signIn: builder.query<SignInResUser, SignInReqUser>({
+      query: (args) => ({
+        url: `/users/login`,
         method: 'post',
         body: {
           user: args,
@@ -19,4 +33,4 @@ export const authApi = createApi({
   }),
 });
 
-export const { useLazySignUpQuery } = authApi;
+export const { useLazySignUpQuery, useLazySignInQuery } = authApi;

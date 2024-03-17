@@ -36,14 +36,20 @@ const SignInPage: FC<SignInPageProps> = ({ setIsLoggedIn }) => {
     resolver: yupResolver(schema),
   });
 
+  const [error, setError] = React.useState<string>('');
   const [triggerSignInQuery] = useLazySignInQuery();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const onSubmit = async (values: SignInFormInt) => {
     try {
-      const res = await triggerSignInQuery(values, false);
+      const copiedValues = { ...values };
+      const res = await triggerSignInQuery(copiedValues, false);
 
+      if (res?.status === 'rejected') {
+        setError('Email or password is invalid');
+        return;
+      }
       dispatch(setUser(res!.data!.user));
 
       setIsLoggedIn(true);
@@ -64,6 +70,9 @@ const SignInPage: FC<SignInPageProps> = ({ setIsLoggedIn }) => {
           <Link to="/login" className="text-blog-blue hover:underline">
             Need an account?
           </Link>
+        </div>
+        <div className="flex flex-col mx-auto max-w-inputWidth">
+          <div className="absolute text-xs text-red-500">{error}</div>
         </div>
         <form
           className="flex flex-col mx-auto max-w-inputWidth"

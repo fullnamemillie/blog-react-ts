@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Banner from '../../components/Banner/Banner';
 import MainContent from '../../components/MainContent/MainContent';
 import { useSearchParams } from 'react-router-dom';
 import { useGetPostsQuery } from '../../api/postsApi';
 import Container from '../../components/Container/Container';
 
-const MainPage = () => {
+interface MainPageProps {
+  isLoggedIn: boolean;
+}
+
+const MainPage: FC<MainPageProps> = ({ isLoggedIn }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [page, setPage] = React.useState(0);
 
@@ -24,6 +28,7 @@ const MainPage = () => {
       <Banner />
       <Container>
         <MainContent
+          isLoggedIn={isLoggedIn}
           data={data}
           isLoading={isLoading}
           error={error}

@@ -14,7 +14,7 @@ function App() {
     <div>
       <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<MainPage isLoggedIn={isLoggedIn} />} />
         <Route path="/:profile" element={<ProfilePage />} />
         <Route path="/:profile/favorites" element={<ProfilePage />} />
         <Route path="/articles/:slug" element={<ArticlePage />} />

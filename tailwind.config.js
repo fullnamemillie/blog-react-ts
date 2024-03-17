@@ -16,6 +16,7 @@ module.exports = {
       borderRadius: {
         articleTag: '10rem',
         signUpRounded: '0.3rem',
+        username: '50%',
       },
       colors: {
         blog: {
@@ -40,6 +41,7 @@ module.exports = {
         authorImage: '6.25rem',
         commentsContainer: '52.9rem',
         inputWidth: '33.75rem',
+        username: '0.125rem',
       },
       boxShadow: {
         banner:

@@ -1,11 +1,18 @@
 import React, { FC } from 'react';
-import { MainContentProps } from '../MainContent/MainContent';
 import ArticleList from '../ArticleList/ArticleList';
 import ReactPaginate from 'react-paginate';
 import GlobalFeed from '../GlobalFeed/GlobalFeed';
 import { useLocation } from 'react-router-dom';
+import { MainContentData } from '../../interfaces/interfaces';
 
-interface AuthorProfileContentProps extends MainContentProps {}
+interface AuthorProfileContentProps {
+  data?: MainContentData;
+  isLoading: boolean;
+  error: unknown;
+  page: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+  setSearchParams: React.Dispatch<React.SetStateAction<URLSearchParams>>;
+}
 
 const AuthorProfileContent: FC<AuthorProfileContentProps> = ({
   data,

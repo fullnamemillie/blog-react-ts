@@ -15,7 +15,7 @@ interface GlobalFeedProps {
 const GlobalFeed: FC<GlobalFeedProps> = ({
   defaultText = 'Global Feed',
   defaultLink = '/',
-  items = [],
+  items,
 }) => {
   const [searchParams] = useSearchParams();
 
@@ -30,11 +30,12 @@ const GlobalFeed: FC<GlobalFeedProps> = ({
         {defaultText}
       </NavLink>
       <div>
-        {items.map((item) => (
-          <NavLink key={item.link} to={item.link}>
-            {item.text}
-          </NavLink>
-        ))}
+        {items &&
+          items.map((item) => (
+            <NavLink key={item.link} to={item.link}>
+              {item.text}
+            </NavLink>
+          ))}
       </div>
       <div className="px-4 py-2 text-blog-blue">{tag && <p>#{tag}</p>}</div>
     </div>

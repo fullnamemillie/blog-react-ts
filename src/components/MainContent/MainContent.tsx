@@ -10,6 +10,7 @@ export interface MainContentProps {
   isLoading: boolean;
   error: unknown;
   page: number;
+  isLoggedIn: boolean;
   setPage: React.Dispatch<React.SetStateAction<number>>;
   setSearchParams: React.Dispatch<React.SetStateAction<URLSearchParams>>;
 }
@@ -19,6 +20,7 @@ const MainContent: FC<MainContentProps> = ({
   isLoading,
   error,
   page,
+  isLoggedIn,
   setPage,
   setSearchParams,
 }) => {
@@ -32,11 +34,20 @@ const MainContent: FC<MainContentProps> = ({
     });
   };
 
+  const items = [];
+
+  if (isLoggedIn) {
+    items.push({
+      text: 'Your Feed',
+      link: '/your-feed',
+    });
+  }
+
   if (isLoading) {
     return (
       <div className="flex gap-8">
         <div className="w-3/4">
-          <GlobalFeed />
+          <GlobalFeed items={items} />
           <p className="py-6">Loading articles...</p>
         </div>
         <div className="w-1/4">
@@ -54,7 +65,7 @@ const MainContent: FC<MainContentProps> = ({
     <>
       <div className="flex gap-8">
         <div className="w-3/4">
-          <GlobalFeed />
+          <GlobalFeed items={items} />
           <div>
             <ArticleList data={data?.articles || []} />
           </div>

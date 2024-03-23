@@ -9,6 +9,7 @@ import AuthButton from '../../components/AuthButton/AuthButton';
 import { useLazySignUpQuery } from '../../api/authApi';
 import { useAppDispatch } from '../../store/store';
 import { setUser } from '../../store/service/authSlice';
+import { SignUpResUser } from '../../interfaces/interfaces';
 
 interface SignUpFormInt {
   username: string;
@@ -49,7 +50,7 @@ const SignUpPage: FC<SignUpPageProps> = ({ setIsLoggedIn }) => {
     try {
       const res = await triggerSignUpQuery(values, false);
 
-      dispatch(setUser(res!.data!.user));
+      dispatch(setUser(res?.data?.user as SignUpResUser));
 
       setIsLoggedIn(true);
 

@@ -23,12 +23,30 @@ const MainPage: FC<MainPageProps> = ({ isLoggedIn }) => {
 
   const { data, isLoading, error } = useGetPostsQuery(queryArgs);
 
+  const items = isLoggedIn
+    ? [
+        {
+          text: 'Your Feed',
+          link: '/your-feed',
+        },
+        {
+          text: 'Global Feed',
+          link: '/',
+        },
+      ]
+    : [
+        {
+          text: 'Global Feed',
+          link: '/',
+        },
+      ];
+
   return (
     <>
       <Banner />
       <Container>
         <MainContent
-          isLoggedIn={isLoggedIn}
+          items={items}
           data={data}
           isLoading={isLoading}
           error={error}

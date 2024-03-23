@@ -84,7 +84,6 @@ export interface SignUpRes {
 }
 
 export interface SignUpResUser {
-  user: any;
   email: string;
   token: string;
   username: string;
@@ -106,7 +105,6 @@ export interface SignInRes {
 }
 
 export interface SignInResUser {
-  user: any;
   email: string;
   token: string;
   username: string;

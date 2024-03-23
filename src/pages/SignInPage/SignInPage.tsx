@@ -9,6 +9,7 @@ import AuthButton from '../../components/AuthButton/AuthButton';
 import { useLazySignInQuery } from '../../api/authApi';
 import { useAppDispatch } from '../../store/store';
 import { setUser } from '../../store/service/authSlice';
+import { SignInResUser } from '../../interfaces/interfaces';
 
 interface SignInFormInt {
   email: string;
@@ -50,7 +51,7 @@ const SignInPage: FC<SignInPageProps> = ({ setIsLoggedIn }) => {
         setError('Email or password is invalid');
         return;
       }
-      dispatch(setUser(res!.data!.user));
+      dispatch(setUser(res?.data?.user as SignInResUser));
 
       setIsLoggedIn(true);
 

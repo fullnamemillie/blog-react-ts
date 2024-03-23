@@ -24,6 +24,17 @@ const UserPage = () => {
     username: profile!,
   });
 
+  const items = [
+    {
+      text: 'My Articles',
+      link: `/${profile}`,
+    },
+    {
+      text: 'Favorite Articles',
+      link: `/${profile}/favorites`,
+    },
+  ];
+
   if (!profileInfo) {
     return null;
   }
@@ -32,6 +43,7 @@ const UserPage = () => {
     <>
       <AuthorBanner profile={profileInfo.profile} />
       <AuthorProfileContent
+        items={items}
         data={data}
         isLoading={isLoading}
         error={error}

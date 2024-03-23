@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 import ArticleList from '../ArticleList/ArticleList';
 import ReactPaginate from 'react-paginate';
-import GlobalFeed from '../GlobalFeed/GlobalFeed';
-import { useLocation } from 'react-router-dom';
+import GlobalFeed, { FavoritedArticles } from '../GlobalFeed/GlobalFeed';
 import { MainContentData } from '../../interfaces/interfaces';
 
 interface AuthorProfileContentProps {
@@ -10,6 +9,7 @@ interface AuthorProfileContentProps {
   isLoading: boolean;
   error: unknown;
   page: number;
+  items: FavoritedArticles[];
   setPage: React.Dispatch<React.SetStateAction<number>>;
   setSearchParams: React.Dispatch<React.SetStateAction<URLSearchParams>>;
 }
@@ -19,6 +19,7 @@ const AuthorProfileContent: FC<AuthorProfileContentProps> = ({
   isLoading,
   error,
   page,
+  items,
   setPage,
   setSearchParams,
 }) => {
@@ -32,20 +33,11 @@ const AuthorProfileContent: FC<AuthorProfileContentProps> = ({
     });
   };
 
-  const location = useLocation();
-
-  // const favoritedArticles = [
-  //   { text: 'Favorited Articles', link: `${location.pathname}/favorites` },
-  // ];
-
   if (isLoading) {
     return (
       <div className="w-authorContainer mx-auto">
         <div>
-          <GlobalFeed
-            defaultText="My Articles"
-            defaultLink={location.pathname}
-          />
+          <GlobalFeed items={items} />
         </div>
         <div className="mt-4">
           <h2>Loading articles...</h2>
@@ -58,10 +50,7 @@ const AuthorProfileContent: FC<AuthorProfileContentProps> = ({
     return (
       <div className="w-authorContainer mx-auto">
         <div className="mt-4">
-          <GlobalFeed
-            defaultText="My Articles"
-            defaultLink={location.pathname}
-          />
+          <GlobalFeed items={items} />
         </div>
         <div>
           <h2>Error!</h2>
@@ -73,7 +62,7 @@ const AuthorProfileContent: FC<AuthorProfileContentProps> = ({
   return (
     <div className="w-authorContainer mx-auto">
       <div>
-        <GlobalFeed defaultText="My Articles" defaultLink={location.pathname} />
+        <GlobalFeed items={items} />
       </div>
       <div>
         <ArticleList data={data?.articles || []} />

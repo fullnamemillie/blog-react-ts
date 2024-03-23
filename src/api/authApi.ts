@@ -1,10 +1,10 @@
-import { SignInReqUser } from './../interfaces/interfaces';
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {
-  SignInResUser,
-  SignUpReqUser,
-  SignUpResUser,
-} from '../interfaces/interfaces';
+  SignInReqUser,
+  SignInRes,
+  SignUpRes,
+} from './../interfaces/interfaces';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { SignUpReqUser } from '../interfaces/interfaces';
 
 export const authApi = createApi({
   reducerPath: 'authApi',
@@ -12,7 +12,7 @@ export const authApi = createApi({
     baseUrl: 'https://api.realworld.io/api/',
   }),
   endpoints: (builder) => ({
-    signUp: builder.query<SignUpResUser, SignUpReqUser>({
+    signUp: builder.query<SignUpRes, SignUpReqUser>({
       query: (args) => ({
         url: `/users`,
         method: 'post',
@@ -21,7 +21,7 @@ export const authApi = createApi({
         },
       }),
     }),
-    signIn: builder.query<SignInResUser, SignInReqUser>({
+    signIn: builder.query<SignInRes, SignInReqUser>({
       query: (args) => ({
         url: `/users/login`,
         method: 'post',

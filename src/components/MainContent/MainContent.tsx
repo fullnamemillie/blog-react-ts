@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import ArticleList from '../ArticleList/ArticleList';
-import GlobalFeed from '../GlobalFeed/GlobalFeed';
+import GlobalFeed, { FavoritedArticles } from '../GlobalFeed/GlobalFeed';
 import ReactPaginate from 'react-paginate';
 import PopularTagsComponent from '../PopularTagsComponent/PopularTagsComponent';
 import { MainContentData } from '../../interfaces/interfaces';
@@ -10,7 +10,7 @@ export interface MainContentProps {
   isLoading: boolean;
   error: unknown;
   page: number;
-  isLoggedIn: boolean;
+  items: FavoritedArticles[];
   setPage: React.Dispatch<React.SetStateAction<number>>;
   setSearchParams: React.Dispatch<React.SetStateAction<URLSearchParams>>;
 }
@@ -20,7 +20,7 @@ const MainContent: FC<MainContentProps> = ({
   isLoading,
   error,
   page,
-  isLoggedIn,
+  items,
   setPage,
   setSearchParams,
 }) => {
@@ -33,15 +33,6 @@ const MainContent: FC<MainContentProps> = ({
       return newSearchParams;
     });
   };
-
-  const items = [];
-
-  if (isLoggedIn) {
-    items.push({
-      text: 'Your Feed',
-      link: '/your-feed',
-    });
-  }
 
   if (isLoading) {
     return (

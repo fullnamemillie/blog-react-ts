@@ -25,6 +25,18 @@ export const postsApi = createApi({
     getPosts: builder.query<MainContentData, MainContentInt>({
       query: ({ page, tag }) => {
         return {
+          url: `/articles/feed`,
+          params: {
+            limit: 10,
+            offset: page * 10,
+            tag,
+          },
+        };
+      },
+    }),
+    getYourPosts: builder.query<MainContentData, MainContentInt>({
+      query: ({ page, tag }) => {
+        return {
           url: `/articles`,
           params: {
             limit: 10,
@@ -72,6 +84,7 @@ export const postsApi = createApi({
 
 export const {
   useGetPostsQuery,
+  useGetYourPostsQuery,
   useGetAuthorPostsQuery,
   useGetPopularTagsQuery,
   useGetSpecificArticleQuery,
